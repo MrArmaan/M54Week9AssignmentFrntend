@@ -13,7 +13,7 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefaukt();
+    e.preventDefault();
     console.log("hello from signup");
     await signup(username, email, password);
   };
