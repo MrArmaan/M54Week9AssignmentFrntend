@@ -1,9 +1,13 @@
 import { useState } from "react";
 
+import LogOrSign from "./components/logOrSign/LogOrSign";
+
 function App() {
   return (
     <>
-      <div>Hello World</div>
+      <div className="wrapper">
+        <LogOrSign />
+      </div>
     </>
   );
 }
