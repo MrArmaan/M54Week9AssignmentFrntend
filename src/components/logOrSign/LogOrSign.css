@@ -1,8 +1,45 @@
 .logorsign-wrapper {
-  width: 80%;
+  position: relative;
+  width: 100%;
   height: 80vh;
   border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  border-width: 0.3cm;
+  background-color: rgb(255, 255, 255);
+}
+
+.corner-images {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url("frontendassignment/public/pokeball.png");
+}
+
+.corner-images.top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.corner-images.top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.corner-images.bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.corner-images.bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+.center-bottom-image {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
 }

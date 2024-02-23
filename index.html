@@ -1,13 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Pokemon League Challenge</title>
+    <style>
+      #title-container {
+        position: relative;
+      }
+
+      #background {
+        color: rgb(255, 255, 255);
+      }
+
+      #left-title-logo,
+      #right-title-logo {
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      #left-title-logo {
+        left: 0;
+      }
+
+      #right-title-logo {
+        right: 0;
+      }
+    </style>
   </head>
   <body>
+    <div id="title-container">
+      <img src="/0150.png" alt="" id="left-title-logo" />
+      <h1>Pokemon League Challenge</h1>
+      <img src="/0151.png" alt="" id="right-title-logo" />
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
