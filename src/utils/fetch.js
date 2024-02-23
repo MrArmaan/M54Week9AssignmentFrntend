@@ -17,18 +17,26 @@ export const signup = async (username, email, password) => {
 };
 
 export const loginUser = async (username, password) => {
-  const response = await fetch("http://localhost:5001/users/login", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username: username,
-      password: password,
-    }),
-  });
+  try {
+    const response = await fetch("http://localhost:5001/users/login", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
 
-  const data = await response.json();
-  return data;
+    if (!response.ok) {
+      throw new Error("Failed to log in");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error logging in:", error);
+    throw error;
+  }
 };
