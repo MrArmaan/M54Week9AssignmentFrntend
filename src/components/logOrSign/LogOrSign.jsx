@@ -18,8 +18,9 @@ const LogOrSign = () => {
         width="50px"
         height="50px"
       />
-      <Signup />
       <Login />
+      <Signup />
+
       <img
         className="corner-images bottom-left"
         src="/0001.png"
