@@ -1,6 +1,7 @@
-import { useState } from "react";
-
+import { createRoot } from "react-dom/client";
 import LogOrSign from "./components/logOrSign/LogOrSign";
+
+const root = createRoot(document.getElementById("root"));
 
 function App() {
   return (
@@ -11,5 +12,7 @@ function App() {
     </>
   );
 }
+
+root.render(<App />);
 
 export default App;

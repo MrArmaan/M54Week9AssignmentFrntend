@@ -19,6 +19,9 @@ const Signup = () => {
     await signup(username, email, password);
     setIsSignedUp(true);
     setShowSuccessMessage(true);
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   const closePopup = () => {

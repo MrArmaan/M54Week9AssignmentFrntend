@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { loginUser } from "../../utils/fetch";
+import { loginUser, getAllUsers } from "../../utils/fetch";
+import Modal from "./showChallengersModal";
 import "./Login.css";
 
 const Login = ({ setLoggedIn }) => {
@@ -7,6 +8,8 @@ const Login = ({ setLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showUsersModal, setShowUsersModal] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const changeHandler = (e, setter) => {
     setter(e.target.value);
@@ -40,6 +43,16 @@ const Login = ({ setLoggedIn }) => {
     setErrorMessage("");
   };
 
+  const handleGetUsers = async () => {
+    try {
+      const fetchedUsers = await getAllUsers();
+      setUsers(fetchedUsers);
+      setShowUsersModal(true);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -64,12 +77,27 @@ const Login = ({ setLoggedIn }) => {
             &times;
           </span>
           <p className="success-message">Login successful. Good luck!</p>
+          <button onClick={handleGetUsers}>Show Users</button>
         </div>
       )}
       {errorMessage && (
         <div className="error-message">
           <p>{errorMessage}</p>
         </div>
+      )}
+      {showUsersModal && (
+        <Modal onClose={() => setShowUsersModal(false)}>
+          <h2>Users</h2>
+          {users && users.length > 0 ? (
+            <ul>
+              {users.map((user) => (
+                <li key={user.user.id}>{user.user.username}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No users found.</p>
+          )}
+        </Modal>
       )}
     </div>
   );
